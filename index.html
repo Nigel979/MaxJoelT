@@ -1,248 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>MaxJoelTourism - Dubai Tours</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MaxJoelTourism - Dubai Tours</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-
-  html, body {
-    font-family: 'Poppins', sans-serif;
-    height: 100%;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  body {
-    background: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    transition: background-color 0.5s, color 0.5s;
-    animation: bgZoom 20s ease-in-out forwards;
-    background-attachment: fixed;
-  }
-
-  @keyframes bgZoom {
-    0% { background-size: 100% auto; }
-    50% { background-size: 105% auto; }
-    100% { background-size: 100% auto; }
-  }
-
-  body.dark {
-    filter: brightness(0.65);
-    color: #e0ffff;
-    position: relative;
-  }
-  body.dark::after {
-    content: "";
-    position: fixed;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.6);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  header {
-    font-size: 3rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    user-select: none;
-    z-index: 1;
-    opacity: 0;
-    animation: fadeInDown 1s ease forwards;
-    animation-delay: 0.3s;
-    text-align: center;
-    padding: 1rem 2rem;
-    border: 4px solid #00ced1;
-    border-radius: 20px;
-    box-shadow: 0 0 15px #00ced1;
-    max-width: fit-content;
-    margin: 0 auto 0.5rem auto;
-    background: rgba(0,0,0,0.4);
-    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-  }
-
-  .slogan {
-    text-align: center;
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #00ffffcc;
-    margin-bottom: 1rem;
-    text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
-    opacity: 0;
-    animation: fadeInDown 1s ease forwards;
-    animation-delay: 0.8s;
-  }
-
-  .info {
-    max-width: 600px;
-    text-align: center;
-    margin: 0 auto 2rem auto;
-    font-size: 1rem;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  }
-
-  .contact-circle {
-    width: 60px;
-    height: 60px;
-    background: #00ced1;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 99;
-    box-shadow: 0 0 12px rgba(0,206,209,0.6);
-    transition: transform 0.3s ease;
-  }
-  .contact-circle:hover {
-    transform: scale(1.1);
-  }
-
-  .contact-modal {
-    position: fixed;
-    bottom: 80px;
-    right: 1rem;
-    width: 90%;
-    max-width: 400px;
-    background: rgba(0,0,0,0.9);
-    border-radius: 15px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.8);
-    padding: 1.5rem;
-    display: none;
-    flex-direction: column;
-    z-index: 999;
-  }
-
-  .contact-modal.active {
-    display: flex;
-  }
-
-  .contact-modal h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-    font-size: 1.5rem;
-    color: #00ffff;
-  }
-
-  .input-group {
-    position: relative;
-    margin-bottom: 1.2rem;
-  }
-
-  input, textarea {
-    width: 100%;
-    padding: 1rem 0.8rem;
-    background: rgba(255 255 255 / 0.1);
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 1rem;
-  }
-
-  input:focus, textarea:focus {
-    outline: none;
-    background: rgba(255 255 255 / 0.2);
-    box-shadow: 0 0 10px #00ffff;
-    color: #000;
-  }
-
-  label {
-    position: absolute;
-    top: 1rem;
-    left: 0.8rem;
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    transition: 0.3s ease;
-    pointer-events: none;
-  }
-
-  input:focus + label,
-  input:not(:placeholder-shown) + label,
-  textarea:focus + label,
-  textarea:not(:placeholder-shown) + label {
-    top: 0.2rem;
-    font-size: 0.75rem;
-    color: #00ffff;
-  }
-
-  button {
-    background: #00ced1;
-    border: none;
-    padding: 1rem;
-    border-radius: 25px;
-    color: #003366;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  button:hover {
-    transform: scale(1.05);
-  }
-
-  .dark-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    background: #00ced1;
-    color: #003366;
-    border: none;
-    padding: 0.6rem 1.3rem;
-    border-radius: 25px;
-    font-weight: 700;
-    cursor: pointer;
-    z-index: 100;
-    user-select: none;
-    box-shadow: 0 4px 8px rgba(0,206,209, 0.7);
-    transition: background 0.3s ease, transform 0.2s ease;
-  }
-
-  .dark-toggle:hover {
-    background: #00b3b3;
-    transform: scale(1.1);
-  }
-
-  @keyframes fadeInDown {
-    from {opacity: 0; transform: translateY(-20px);}
-    to {opacity: 1; transform: translateY(0);}
-  }
-
-  @media (max-width: 600px) {
-    body {
-      padding: 1rem;
-      background-size: cover;
-      background-position: center;
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
     }
 
-    .dark-toggle {
-      padding: 0.4rem 1rem;
-      font-size: 0.9rem;
-      top: 0.5rem;
-      right: 0.5rem;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1518684079-3c830dcef090?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2rem;
+      animation: bgZoom 20s ease-in-out forwards;
+    }
+
+    @keyframes bgZoom {
+      0%, 100% { background-size: cover; }
+      50% { background-size: 105% auto; }
+    }
+
+    body.dark {
+      filter: brightness(0.65);
+      color: #e0ffff;
+      position: relative;
+    }
+
+    body.dark::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header {
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      user-select: none;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeInDown 1s ease forwards;
+      animation-delay: 0.3s;
+      text-align: center;
+      padding: 1rem 2rem;
+      border: 4px solid #00ced1;
+      border-radius: 20px;
+      box-shadow: 0 0 15px #00ced1;
+      max-width: fit-content;
+      margin: 0 auto 0.5rem auto;
+      background: rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .slogan {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #00ffffcc;
+      margin-bottom: 1rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+      opacity: 0;
+      animation: fadeInDown 1s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    .info {
+      max-width: 600px;
+      text-align: center;
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 
     .contact-circle {
-      bottom: 1rem;
-      right: 1rem;
+      width: 60px;
+      height: 60px;
+      background: #00ced1;
+      border-radius: 50%;
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 99;
+      box-shadow: 0 0 12px rgba(0,206,209,0.6);
+      transition: transform 0.3s ease;
     }
-  }
-</style>
+
+    .contact-circle:hover {
+      transform: scale(1.1);
+    }
+
+    .contact-modal {
+      position: fixed;
+      bottom: 80px;
+      right: 1rem;
+      width: 90%;
+      max-width: 400px;
+      background: rgba(0,0,0,0.9);
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+      padding: 1.5rem;
+      display: none;
+      flex-direction: column;
+      z-index: 999;
+    }
+
+    .contact-modal.active {
+      display: flex;
+    }
+
+    .contact-modal h2 {
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #00ffff;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 1.2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 1rem 0.8rem;
+      background: rgba(255 255 255 / 0.1);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      background: rgba(255 255 255 / 0.2);
+      box-shadow: 0 0 10px #00ffff;
+      color: #000;
+    }
+
+    label {
+      position: absolute;
+      top: 1rem;
+      left: 0.8rem;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.7);
+      transition: 0.3s ease;
+      pointer-events: none;
+    }
+
+    input:focus + label,
+    input:not(:placeholder-shown) + label,
+    textarea:focus + label,
+    textarea:not(:placeholder-shown) + label {
+      top: 0.2rem;
+      font-size: 0.75rem;
+      color: #00ffff;
+    }
+
+    button {
+      background: #00ced1;
+      border: none;
+      padding: 1rem;
+      border-radius: 25px;
+      color: #003366;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: #00ced1;
+      color: #003366;
+      border: none;
+      padding: 0.6rem 1.3rem;
+      border-radius: 25px;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 100;
+      user-select: none;
+      box-shadow: 0 4px 8px rgba(0,206,209, 0.7);
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .dark-toggle:hover {
+      background: #00b3b3;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeInDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      header {
+        font-size: 1.6rem;
+        padding: 0.5rem;
+        max-width: 90%;
+      }
+
+      .dark-toggle {
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <button class="dark-toggle">Dark Mode</button>
@@ -290,3 +293,4 @@
   </script>
 </body>
 </html>
+
